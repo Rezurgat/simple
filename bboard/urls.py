@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.urls import path
 
-from . views import index, by_rubric
+from . views import index, by_rubric, BbCreateView
 
 urlpatterns = [
-    path('<int:rubric_id>/', by_rubric), #add url-parameter
-    path('', index),
+    path('add/', BbCreateView.as_view(), name='add'),
+    path('<int:rubric_id>/', by_rubric, name='by_rubric'), #add url-parameter
+    path('', index, name='index'),
 ]
